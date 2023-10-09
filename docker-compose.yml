@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  filebeat:
+    image: elastic/filebeat:8.8.0
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./filebeat.reference.yml:/usr/share/filebeat/filebeat.reference.yml
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume/nginx/log/api.log:/usr/share/filebeat/api.log
+      - /volume/nginx/log/access.log:/usr/share/filebeat/access.log
+      - /volume/nginx/log/apprasad.log:/usr/share/filebeat/apprasad.log
+      - /volume/nginx/log/kibana-80.log:/usr/share/filebeat/kibana-80.log
+      - /volume/nginx/log/kibana-443.log:/usr/share/filebeat/kibana-443.log
+      - /volume/nginx/log/error.log:/usr/share/filebeat/error.log
+
+
+
+
